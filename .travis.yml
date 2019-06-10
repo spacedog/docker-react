@@ -1,0 +1,10 @@
+sudo: required
+services:
+  - docker
+
+before_install:
+  - docker build -t abaranov/docker-react -f Dockerfile.dev .
+  - docker image ls
+
+script:
+  - docker run abaranov/docker-react npm run test -- --coverage
